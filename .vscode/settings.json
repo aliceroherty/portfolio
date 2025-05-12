@@ -1,0 +1,8 @@
+{
+    "explorer.fileNesting.enabled": true,
+    "files.exclude": {
+        "portfolio-client": true,
+        "portfolio-server": true,
+        "portfolio-nextjs": true
+    }
+}
