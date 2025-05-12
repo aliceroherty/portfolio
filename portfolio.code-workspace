@@ -2,18 +2,23 @@
 	"folders": [
 		{
             "name": "client",
-			"path": "/home/aliceroherty/git/portfolio/portfolio-client"
+            "path": "./portfolio-client"
 		},
 		{
             "name": "server",
-			"path": "/home/aliceroherty/git/portfolio/portfolio-server"
+            "path": "./portfolio-server"
 		},
         {
             "name": "nextjs",
-            "path": "/home/aliceroherty/git/portfolio/portfolio-nextjs"
+            "path": "./portfolio-nextjs"
+        },
+        {
+            "name": "portfolio",
+            "path": "."
         }
     ],
     "settings": {
+        "workbench.editor.labelFormat": "medium",
         "editor.formatOnPaste": true,
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
