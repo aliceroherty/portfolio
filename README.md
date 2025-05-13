@@ -76,6 +76,7 @@ To update all submodules and push everything at once you have two options:
     ```bash
     git config --global alias.push-all '!git push && git submodule foreach "git push"'
     ```
+
 2. **Use the following command**
 
     ```bash
