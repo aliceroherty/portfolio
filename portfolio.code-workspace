@@ -65,7 +65,9 @@
         "chat.mcp.discovery.enabled": true,
         "github.copilot.chat.agent.runTasks": true,
         "github.copilot.chat.agent.thinkingTool": true,
-        "chat.agent.enabled": true
+        "chat.agent.enabled": true,
+        "typescript.tsdk": "nextjs/node_modules/typescript/lib",
+        "postman.settings.dotenv-detection-notification-visibility": false
     },
     "launch": {
         "configurations": [
@@ -100,6 +102,31 @@
                   "${workspaceFolder:server}/dist/**/*.js"
                 ],
                 "cwd": "${workspaceFolder:server}",
+            },
+            {
+                "name": "Launch Next.js",
+                "request": "launch",
+                "type": "node",
+                "runtimeExecutable": "npm",
+                "runtimeArgs": [
+                    "run",
+                    "dev",
+                ],
+                "cwd": "${workspaceFolder:nextjs}",
+                "outFiles": [
+                    "${workspaceFolder:nextjs}/.next/**/*.js"
+                ],
+                "sourceMaps": true,
+                "serverReadyAction": {
+                    "action": "debugWithChrome",
+                    "pattern": "Local:   http://localhost:([0-9]+)/",
+                    "uriFormat": "http://localhost:%s",
+                    "webRoot": "${workspaceFolder:nextjs}",
+                    "killOnServerStop": true
+                },
+                "skipFiles": [
+                    "<node_internals>/**"
+                ]
             }
         ],
         "compounds": [
@@ -114,7 +141,18 @@
     },
     "tasks": {
         "version": "2.0.0",
-        "tasks": []
+        "tasks": [
+            {
+                "label": "NextJS: Clean NextJS Workspace",
+                "type": "shell",
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "rm -rf .next"
+                ],
+                "problemMatcher": []
+            }
+        ]
     },
     "extensions": {
         "recommendations": [
