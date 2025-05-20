@@ -39,7 +39,7 @@ const KeyboardRenderer = React.memo(() => {
 				depth: true,
 				stencil: false,
 			},
-			dpr: 1, // Fixed lower DPR to reduce memory usage
+			dpr: [1, 2], // Fixed lower DPR to reduce memory usage
 			frameloop: 'always', // Always run the animation frame
 		}),
 		[]

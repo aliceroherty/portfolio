@@ -1,8 +1,87 @@
 {
-    "explorer.fileNesting.enabled": true,
-    "files.exclude": {
-        "portfolio-client": true,
-        "portfolio-server": true,
-        "portfolio-nextjs": true
+    "workbench.editor.labelFormat": "medium",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "If branch name contains number parse number and use it for the commit message. Example: if the branch name is '20-add-resume-download' then the commit msg should look like 'My commit message. Closes #20'."
+        },
+    ],
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        {
+            "text": "Use conventional commit message format."
+        },
+        {
+            "text": "Summarize all changes made on the branch."
+        },
+        {
+            "text": "If the branch name starts with a number assume it is the GitHub issue number. Append the number to the end of the pull request description in the following format: 'Closes #<issue number>'."
+        },
+    ],
+    "peacock.color": "#f675ff",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#f9a8ff",
+        "activityBar.background": "#f9a8ff",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#807700",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#f9a8ff",
+        "statusBar.background": "#f675ff",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#f342ff",
+        "statusBarItem.remoteBackground": "#f675ff",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#f675ff",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#f675ff99",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+    "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+    "github.copilot.chat.languageContext.typescript.enabled": true,
+    "github.copilot.chat.codesearch.enabled": true,
+    "chat.mcp.discovery.enabled": true,
+    "github.copilot.chat.agent.runTasks": true,
+    "github.copilot.chat.agent.thinkingTool": true,
+    "chat.agent.enabled": true,
+    "typescript.tsdk": "nextjs/node_modules/typescript/lib",
+    "postman.settings.dotenv-detection-notification-visibility": false,
+    "extensions": {
+        "recommendations": [
+            "alefragnani.project-manager",
+            "esbenp.prettier-vscode",
+            "ms-azuretools.vscode-docker",
+            "redhat.vscode-yaml",
+            "dsznajder.es7-react-js-snippets",
+            "bradlc.vscode-tailwindcss",
+            "dbaeumer.vscode-eslint",
+            "stylelint.vscode-stylelint",
+            "rvest.vs-code-prettier-eslint",
+            "DavidAnson.vscode-markdownlint",
+            "bierner.markdown-preview-github-styles",
+            "docker.docker",
+            "formulahendry.auto-close-tag",
+            "formulahendry.auto-rename-tag",
+            "formulahendry.auto-complete-tag",
+            "GitHub.copilot",
+            "GitHub.copilot-chat",
+            "github.copilot-workspace",
+            "github.vscode-github-actions",
+            "GitHub.remotehub",
+            "GitHub.vscode-pull-request-github",
+            "ms-vscode-remote.vscode-remote-extensionpack",
+            "ms-vscode-remote.remote-ssh-edit",
+            "mikestead.dotenv",
+            "christian-kohler.npm-intellisense",
+            "johnpapa.vscode-peacock",
+            "yzhang.markdown-all-in-one",
+            "VisualStudioExptTeam.vscodeintellicode",
+            "VisualStudioExptTeam.intellicode-api-usage-examples",
+            "shardulm94.trailing-spaces",
+            "alefragnani.Bookmarks",
+        ]
     }
 }

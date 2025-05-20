@@ -1,9 +1,0 @@
-[submodule "portfolio-client"]
-	path = portfolio-client
-	url = https://github.com/aliceroherty/portfolio-client.git
-[submodule "portfolio-server"]
-	path = portfolio-server
-	url = https://github.com/aliceroherty/portfolio-server.git
-[submodule "portfolio-nextjs"]
-	path = portfolio-nextjs
-	url = https://github.com/aliceroherty/portfolio-nextjs.git

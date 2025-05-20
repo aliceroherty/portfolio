@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Next.js",
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "dev",
+            ],
+            "cwd": "${workspaceFolder}",
+            "outFiles": [
+                "${workspaceFolder}/.next/**/*.js"
+            ],
+            "sourceMaps": true,
+            "serverReadyAction": {
+                "action": "debugWithChrome",
+                "pattern": "Local:   http://localhost:([0-9]+)/",
+                "uriFormat": "http://localhost:%s",
+                "webRoot": ".",
+                "killOnServerStop": true
+            },
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        }
+    ]
+}

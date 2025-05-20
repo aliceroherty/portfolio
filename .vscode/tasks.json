@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "NextJS: Clean NextJS Workspace",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "rm -rf .next"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

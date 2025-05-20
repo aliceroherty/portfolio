@@ -1,31 +1,14 @@
-'use client'
-import 'animate.css'
 import Nav from './components/Nav'
-import Home from './components/Home'
-import About from './components/About'
-import Contact from './components/Contact'
-import Projects from './components/Projects'
-import Experience from './components/Experience'
-import { ThemeProvider, createTheme } from '@mui/material'
-
-const muiTheme = createTheme({
-	palette: {
-		mode: 'dark',
-		primary: {
-			main: '#f9a8d4',
-		},
-		secondary: {
-			main: '#db2777',
-		},
-		error: {
-			main: '#ff0081',
-		},
-	},
-})
+import Home from './components/sections/Home'
+import About from './components/sections/About'
+import Contact from './components/sections/Contact'
+import Projects from './components/sections/Projects'
+import Experience from './components/sections/Experience'
+import ThemeProviderWrapper from './components/utils/ThemeProviderWrapper'
 
 const Page = () => {
 	return (
-		<ThemeProvider theme={muiTheme}>
+		<ThemeProviderWrapper>
 			<Nav />
 			<div className='select-none px-5 md:px-24'>
 				<Home />
@@ -34,7 +17,7 @@ const Page = () => {
 				<Projects />
 				<Contact />
 			</div>
-		</ThemeProvider>
+		</ThemeProviderWrapper>
 	)
 }
 

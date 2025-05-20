@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #f9a8d4;
+  --color-primary-dark: #ca89ad;
+}
+
+@layer components {
+    .active {
+        color: var(--color-primary);
+        cursor: pointer;
+        font-size: var(--text-xl);
+        &:hover {
+            color: var(--color-primary-dark);
+        }
+    }
+
+    .inactive {
+        cursor: pointer;
+        color: white;
+        font-size: var(--text-xl);
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+            color: var(--text-gray-500);
+        }
+    }
+}
+
 html,
 body,
 #root {
@@ -15,16 +42,11 @@ body {
 	overflow-x: hidden;
 }
 
-.active {
-	color: rgb(249 168 212) !important;
-}
-
-.hideNav {
+.hamburger-menu-collapse {
 	display: none;
 }
 
-.showNav {
-	display: block;
+.hamburger-menu-expand {
 	position: absolute;
 	width: 100%;
 	height: 100vh;
@@ -35,6 +57,7 @@ body {
 	z-index: 10;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: flex-start;
 	align-items: center;
+    padding-top: 6rem;
 }
