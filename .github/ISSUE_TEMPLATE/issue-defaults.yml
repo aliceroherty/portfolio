@@ -1,0 +1,28 @@
+name: "Issue Defaults"
+description: Auto-assign default issue properties.
+title: "<Enter issue title>"
+projects: ["aliceroherty/1"]
+assignees:
+  - aliceroherty
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Issue Details
+        Please fill out the following details to help us understand the issue better.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Issue Type
+      description: Select the type of issue.
+      options:
+        - "Bug"
+        - "Feature"
+        - "Documentation"
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the issue in detail.
+      placeholder: Enter a description.
+      value: "This is a default description."
