@@ -24,6 +24,21 @@
             "skipFiles": [
                 "<node_internals>/**"
             ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Generate Preview Images (npx)",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [
+                "ts-node",
+                "scripts/generatePreviewImages.ts"
+            ],
+            "cwd": "${workspaceFolder}",
+            "autoAttachChildProcesses": true,
+            "env": {
+                "TS_NODE_PROJECT": "${workspaceFolder}/scripts/tsconfig.json"
+            }
         }
     ]
 }
