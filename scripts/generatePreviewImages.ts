@@ -19,7 +19,7 @@ const generateScreenshots = async () => {
 		const url = `http://localhost:3000/${section}`
 		const path = `${dir}/${section}.png`
 
-        console.log(`Capturing ${url} -> ${path}`)
+		console.log(`Capturing ${url} -> ${path}`)
 
 		await captureWebsite.file(url, path, {
 			width: 1920,
@@ -31,6 +31,14 @@ const generateScreenshots = async () => {
 			styles: [
 				'html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none !important; }',
 				'html, body, * { scrollbar-width: none !important; -ms-overflow-style: none !important; }',
+			],
+			cookies: [
+				{
+					name: 'DISABLE_ANIMATIONS',
+					value: 'true',
+					domain: 'localhost',
+					path: '/',
+				},
 			],
 		})
 	}

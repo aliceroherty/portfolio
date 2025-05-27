@@ -4,25 +4,83 @@ import React, { Suspense, useState, useEffect, useRef, useMemo } from 'react'
 import { Canvas, CanvasProps } from '@react-three/fiber'
 import AnimatedModel from './AnimatedModel'
 
-// Create a memoized renderer to prevent unnecessary re-renders
-const KeyboardRenderer = React.memo(() => {
-	// Create a stable reference for the Canvas element
-	const canvasRef = useRef<HTMLCanvasElement>(null)
+type CanvasStyleAndScale = [React.CSSProperties, number]
+function getCanvasStyleAndScale(): CanvasStyleAndScale {
+	if (typeof window !== 'undefined') {
+		if (window.innerWidth >= 1280) {
+			return [
+				{
+					position: 'absolute',
+					top: '0',
+					left: 'auto',
+					right: '10vw',
+					width: '75vw',
+					height: '75vh',
+					maxWidth: '1200px',
+					minWidth: '400px',
+					overflow: 'hidden',
+					transform: 'translateY(-5vh)',
+				},
+				1.2,
+			]
+		} else if (window.innerWidth >= 1024) {
+			return [
+				{
+					position: 'absolute',
+					top: '0',
+					left: 'auto',
+					right: '5vw',
+					width: '85vw',
+					height: '70vh',
+					maxWidth: '900px',
+					minWidth: '350px',
+					overflow: 'hidden',
+					transform: 'translateY(-7vh)',
+				},
+				1.1,
+			]
+		} else {
+			return [
+				{
+					position: 'absolute',
+					top: '0',
+					left: '0',
+					width: '100vw',
+					height: '50vh',
+					maxWidth: '100vw',
+					minWidth: '0',
+					overflow: 'hidden',
+					transform: 'translateY(28vh)',
+				},
+				0.85,
+			]
+		}
+	}
+	return [
+		{
+			position: 'absolute',
+			top: '0',
+			left: '0',
+			width: '100%',
+			height: '75vh',
+			overflow: 'hidden',
+			transform: 'translateY(-5vh)',
+		},
+		1.1,
+	]
+}
 
-	// Create a stable state for visibility and rendering
+const KeyboardRenderer = React.memo(() => {
+	const canvasRef = useRef<HTMLCanvasElement>(null)
 	const [ready, setReady] = useState(false)
 
-	// Only set ready once, never change it again
 	useEffect(() => {
-		// Small delay to ensure the DOM is ready
 		const timer = setTimeout(() => {
 			setReady(true)
 		}, 500)
-
 		return () => clearTimeout(timer)
-	}, []) // Empty dependency array means this runs once
+	}, [])
 
-	// Create stable Canvas properties as a memoized object
 	const canvasProps: CanvasProps = useMemo(
 		() => ({
 			style: {
@@ -39,35 +97,47 @@ const KeyboardRenderer = React.memo(() => {
 				depth: true,
 				stencil: false,
 			},
-			dpr: [1, 2], // Fixed lower DPR to reduce memory usage
-			frameloop: 'always', // Always run the animation frame
+			dpr: [1, 2],
+			frameloop: 'always',
 		}),
 		[]
-	) // Empty dependency array means this never changes
+	)
 
-	// If not ready, render nothing
+	const [canvasStyle, setCanvasStyle] = useState<React.CSSProperties>(
+		() => getCanvasStyleAndScale()[0]
+	)
+	const [modelScale, setModelScale] = useState<number>(
+		() => getCanvasStyleAndScale()[1]
+	)
+
+	useEffect(() => {
+		const handleResize = () => {
+			const [style, scale] = getCanvasStyleAndScale()
+			setCanvasStyle(style)
+			setModelScale(scale)
+		}
+		handleResize()
+		window.addEventListener('resize', handleResize)
+		return () => window.removeEventListener('resize', handleResize)
+	}, [])
+
 	if (!ready) return null
 
 	return (
-		<div
-			style={{
-				position: 'absolute',
-				top: 0,
-				left: 0,
-				width: '100%',
-				height: '100%',
-				overflow: 'hidden',
-			}}
-		>
+		<div style={canvasStyle}>
 			<Suspense fallback={null}>
-                <Canvas ref={canvasRef} {...canvasProps}>
-                    <AnimatedModel />
-                </Canvas>
+				<Canvas
+					ref={canvasRef}
+					{...canvasProps}
+					camera={{ position: [0, 0, 6] }}
+				>
+					<AnimatedModel scale={modelScale} />
+				</Canvas>
 			</Suspense>
 		</div>
 	)
 })
 
-KeyboardRenderer.displayName = 'KeyboardRenderer';
+KeyboardRenderer.displayName = 'KeyboardRenderer'
 
 export default KeyboardRenderer
