@@ -1,52 +1,31 @@
 'use client'
-import { useEffect, useState } from 'react'
-import NavItem from '../models/nav-item'
+import { useEffect, useState, useLayoutEffect } from 'react'
 import Link from 'next/link'
+import { routes } from '../services/routes'
 
-const items: NavItem[] = [
-	{
-		id: 'home',
-		href: '/home',
-		title: 'Home',
-	},
-	{
-		id: 'about',
-		href: '/about',
-		title: 'About',
-	},
-	{
-		id: 'experience',
-		href: '/experience',
-		title: 'Experience',
-	},
-	{
-		id: 'projects',
-		href: '/projects',
-		title: 'Projects',
-	},
-	{
-		id: 'contact',
-		href: '/contact',
-		title: 'Contact',
-	},
-]
+const items = routes
 
 const NavItems = () => {
 	const [activeSection, setActiveSection] = useState('')
 
-	const scrollToSectionWithOffset = (id: string, offset = 50) => {
+	const scrollToSectionWithOffset = (
+		id: string,
+		offset = 50,
+		smooth = true
+	) => {
 		const section = document.getElementById(id)
 		if (section) {
 			const y =
 				section.getBoundingClientRect().top + window.scrollY - offset
-			window.scrollTo({ top: y, behavior: 'smooth' })
+			window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' })
 		}
 	}
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const path = window.location.pathname.replace('/', '')
 		if (path) {
-			scrollToSectionWithOffset(path, 100)
+			scrollToSectionWithOffset(path, 100, false)
+			setActiveSection(path)
 		}
 	}, [])
 
@@ -101,7 +80,7 @@ const NavItems = () => {
 				className={activeSection === item?.id ? 'active' : 'inactive'}
 				onClick={(e) => {
 					e.preventDefault()
-					scrollToSectionWithOffset(item.id, 100)
+					scrollToSectionWithOffset(item.id, 100, true) // Smooth scroll on click
 					window.history.replaceState(null, '', `/${item.id}`)
 					setActiveSection(item.id)
 				}}
