@@ -23,7 +23,7 @@ export const AnimationDisabledProvider = ({
 	readonly children: ReactNode
 	readonly initialDisabled?: boolean
 }) => {
-	const [animationDisabled, setAnimationDisabled] = useState(true)
+	const [animationDisabled, setAnimationDisabled] = useState(initialDisabled)
 
 	const contextValue = useMemo(
 		() => ({ animationDisabled, setAnimationDisabled }),

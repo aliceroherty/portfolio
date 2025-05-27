@@ -35,7 +35,7 @@ const AnimatedModel = ({ scale = 0.75 }: { scale?: number }) => {
 		// Always keep keys facing user
 		groupRef.current.rotation.x = Math.PI / 2
 
-		//if (animationDisabled) return
+		if (animationDisabled) return
 
 		// Simple time accumulation
 		animationState.current.time += delta
