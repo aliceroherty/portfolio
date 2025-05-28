@@ -1,32 +1,19 @@
 'use client'
 
 import React, { useRef, useEffect, Ref } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { Model } from './Model'
 import { Group } from 'three'
 import { useAnimationDisabled } from '@/app/context/AnimationDisabledContext'
 
-// This component uses pure Three.js animation with no React state updates
-// This prevents any re-renders during animation that could cause context loss
-const AnimatedModel = ({ scale = 0.75 }: { scale?: number }) => {
-	// Use context to determine if animations are disabled
+const AnimatedModel = () => {
 	const { animationDisabled } = useAnimationDisabled()
-
-	// Create refs for animation
+	const { viewport } = useThree()
 	const groupRef: Ref<Group | null> = useRef(null)
 
-	// Remove all screen-size-based positioning logic from animationState
 	const animationState = useRef({
 		time: 0,
-		baseY: 0,
 	})
-
-	// Set model position to [0, 0, 0] on mount
-	useEffect(() => {
-		if (groupRef.current) {
-			groupRef.current.position.set(0, 0, 0)
-		}
-	}, []) // Run only once
 
 	// Animation loop using useFrame - this doesn't cause re-renders
 	useFrame((_, delta) => {
@@ -59,7 +46,7 @@ const AnimatedModel = ({ scale = 0.75 }: { scale?: number }) => {
 		<>
 			<ambientLight intensity={0.8} />
 			<directionalLight intensity={1} position={[0, 0, 25]} />
-			<group ref={groupRef} scale={scale}>
+			<group ref={groupRef} scale={viewport.width / 11}>
 				<Model />
 			</group>
 		</>
