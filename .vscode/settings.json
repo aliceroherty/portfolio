@@ -83,5 +83,9 @@
             "shardulm94.trailing-spaces",
             "alefragnani.Bookmarks",
         ]
+    },
+    "sonarlint.connectedMode.project": {
+        "connectionId": "aliceroherty",
+        "projectKey": "aliceroherty_portfolio"
     }
 }
