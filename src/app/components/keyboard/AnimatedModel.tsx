@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect, Ref } from 'react'
+import React, { useRef, Ref } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { Model } from './Model'
 import { Group } from 'three'
