@@ -1,5 +1,5 @@
 import ProjectCard from './ProjectCard'
-import Project from '../../models/project'
+import Project from '../../models/Project'
 import { PrismaClient } from '../../../../generated/prisma'
 import AnimatedSection from '../utils/AnimatedSection'
 

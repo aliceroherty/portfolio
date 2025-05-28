@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState, useLayoutEffect } from 'react'
 import Link from 'next/link'
-import { routes } from '../services/routes'
+import { routes } from '../services/RouteMetadataService'
 
 const items = routes
 
