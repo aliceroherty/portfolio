@@ -12,4 +12,9 @@ const slideInLeft = {
 	},
 };
 
-export { slideInLeft };
+const disabled = {
+	hidden: { transform: 'translateX(0%)', transition: { duration: 0 } },
+	visible: { transform: 'translateX(0%)', transition: { duration: 0 } },
+}
+
+export { slideInLeft, disabled }

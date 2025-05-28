@@ -1,7 +1,8 @@
 "use client"
 import React from 'react'
 import { HTMLMotionProps, motion } from 'motion/react';
-import { slideInLeft } from '@/app/utils/motion'
+import { slideInLeft, disabled } from '@/app/utils/motion'
+import { useAnimationDisabled } from '@/app/context/AnimationDisabledContext'
 
 type AnimatedSectionProps = {
 	id?: string
@@ -10,11 +11,18 @@ type AnimatedSectionProps = {
 	children: React.ReactNode
 }
 
-const AnimatedSection = ({ id, className, motionProps, children }: AnimatedSectionProps) => {
-    return (
+const AnimatedSection = ({
+	id,
+	className,
+	motionProps,
+	children,
+}: AnimatedSectionProps) => {
+	const { animationDisabled } = useAnimationDisabled()
+	const variants = animationDisabled ? disabled : slideInLeft
+	return (
 		<div className='w-full'>
 			<motion.div
-				variants={motionProps?.variants || slideInLeft}
+				variants={variants}
 				initial={motionProps?.initial || 'hidden'}
 				whileInView={motionProps?.whileInView || 'visible'}
 				viewport={motionProps?.viewport || { once: true }}

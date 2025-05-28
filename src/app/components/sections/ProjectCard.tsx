@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import { Ref, useEffect, useRef } from 'react'
 import VanillaTilt from 'vanilla-tilt'
-import Project from '../../models/project'
+import Project from '../../models/Project'
 import Image from 'next/image'
 
 const ProjectCard = ({ githubUrl, imageUrl, title, description }: Project) => {

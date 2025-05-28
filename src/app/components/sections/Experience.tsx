@@ -7,6 +7,7 @@ import {
 } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
 import AnimatedSection from '../utils/AnimatedSection'
+import { useAnimationDisabled } from '@/app/context/AnimationDisabledContext'
 
 const Experience = () => {
 	const timelineElements = [
@@ -48,12 +49,14 @@ const Experience = () => {
 		},
 	]
 
+	const { animationDisabled } = useAnimationDisabled()
+
 	return (
 		<AnimatedSection id='experience'>
 			<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
 				Experience
 			</h4>
-			<VerticalTimeline>
+			<VerticalTimeline animate={!animationDisabled}>
 				{timelineElements.map((element) => {
 					return (
 						<VerticalTimelineElement
