@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	const meta = routes.find((r) => r.id === 'home') || routes[0]
 	return {
 		title: meta?.title,
+		description: 'A professional portfolio showcasing my work and skills.',
 		openGraph: {
 			images: [
 				{

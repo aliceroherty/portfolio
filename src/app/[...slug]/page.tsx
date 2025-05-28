@@ -5,9 +5,10 @@ import routes from '../services/RouteMetadataService'
 export async function generateMetadata({
 	params,
 }: {
-	params: { slug?: string[] }
+	params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-	const section = params.slug?.[0] || 'home'
+	const { slug } = await params
+	const section = slug || 'home'
 	const meta = routes.find((r) => r.id === section) || routes[0]
 	return {
 		title: meta?.title,
