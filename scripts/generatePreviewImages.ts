@@ -8,12 +8,11 @@ const sections = routes.map((route) => route.id)
 const generateScreenshots = async () => {
     const dir = './public/og'
 
-    // Remove old screenshots if they exist
     if (fs.existsSync(dir)) {
-        fs.readdirSync(dir).forEach(file => {
-            fs.unlinkSync(path.join(dir, file))
-        })
-    }
+		fs.readdirSync(dir).forEach((file) => {
+			fs.unlinkSync(path.join(dir, file))
+		})
+	}
 
 	for (const section of sections) {
 		const url = `http://localhost:3000/${section}`
@@ -21,13 +20,13 @@ const generateScreenshots = async () => {
 
 		console.log(`Capturing ${url} -> ${path}`)
 
+		// Note: WebGL doesnt seem to be working rn for headless
+		// so these images will need to be manually updated to ensure 3d model is rendered.
 		await captureWebsite.file(url, path, {
 			width: 1920,
 			height: 1080,
 			delay: 1,
-			disableAnimations: true,
 			debug: true,
-			scaleFactor: 1.5,
 			styles: [
 				'html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none !important; }',
 				'html, body, * { scrollbar-width: none !important; -ms-overflow-style: none !important; }',
@@ -40,6 +39,10 @@ const generateScreenshots = async () => {
 					path: '/',
 				},
 			],
+			launchOptions: {
+				headless: 'shell',
+				args: ['--enable-webgl'],
+			},
 		})
 	}
 }
