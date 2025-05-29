@@ -5,6 +5,7 @@ import * as path from 'path'
 import { spawn, ChildProcess } from 'child_process'
 
 const sections = routes.map((route) => route.id)
+const port = 3001
 
 // Start a Next.js server in production mode for screenshots
 const startProdServer = () => {
@@ -19,7 +20,7 @@ const startProdServer = () => {
 		build.on('exit', (code) => {
 			if (code !== 0) return reject(new Error('Build failed'))
 			// Then, start the server
-			const server = spawn('npm', ['run', 'start'], {
+			const server = spawn('next', ['start', '-p', `${port}`], {
 				cwd: process.cwd(),
 				env: { ...process.env, NODE_ENV: 'production' },
 				stdio: 'inherit',
@@ -49,7 +50,7 @@ const generateScreenshots = async () => {
 
 	try {
 		for (const section of sections) {
-			const url = `http://localhost:3000/${section}`
+			const url = `http://localhost:${port}/${section}`
 			const path = `${dir}/${section}.png`
 
 			console.log(`Capturing ${url} -> ${path}`)
@@ -59,7 +60,7 @@ const generateScreenshots = async () => {
 			await captureWebsite.file(url, path, {
 				width: 1200,
 				height: 630,
-				delay: 1,
+				delay: 2,
 				debug: true,
 				styles: [
 					'html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none !important; }',
