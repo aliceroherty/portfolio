@@ -12,39 +12,53 @@ import { useAnimationDisabled } from '@/app/context/AnimationDisabledContext'
 const Experience = () => {
 	const timelineElements = [
 		{
-			id: 1,
-			title: 'High School Diploma',
-			location: 'Dalhousie, New Brunswick',
-			description:
-				"<p id='description'>Excelled in computer science course where projects where written in Visual Basic. Learned basics of core programming concepts.",
-			date: 'September 2014 - June 2018',
+			id: 'education',
+			title: 'Education',
+			location: 'New Brunswick Community College (NBCC)',
+			description: `
+		<p><span class='font-semibold text-pink-300'>Web and Mobile App Development</span> (Honors Graduate). My coursework and projects gave me hands-on experience with a wide range of technologies:</p>
+		<ul class='mb-4 list-disc list-inside pl-6'>
+			<li><span class='font-semibold text-pink-300'>.NET Framework</span> (Entity Framework, ASP.NET, WinForms)</li>
+			<li><span class='font-semibold text-pink-300'>SQL</span> (Stored Procedures, Subqueries, CRUD operations)</li>
+			<li><span class='font-semibold text-pink-300'>React Native</span> for cross-platform mobile apps</li>
+			<li><span class='font-semibold text-pink-300'>Kotlin</span> for Android, <span class='font-semibold text-pink-300'>Swift</span> for iOS</li>
+			<li><span class='font-semibold text-pink-300'>Angular</span> for web apps</li>
+			<li><span class='font-semibold text-pink-300'>Java</span> (Java EE, Swing)</li>
+		</ul>
+		<p>We also explored methodologies like <span class='font-semibold text-pink-300'>Waterfall</span> and <span class='font-semibold text-pink-300'>Agile</span>, <span class='font-semibold text-pink-300'>test-driven development</span>, <span class='font-semibold text-pink-300'>SOLID</span> principles, multi-tier architecture, and design patterns such as <span class='font-semibold text-pink-300'>Factory</span> and <span class='font-semibold text-pink-300'>Singleton</span>.</p>
+	`,
+			date: '2018 - 2020',
 			icon: 'school',
 		},
 		{
-			id: 2,
-			title: 'Web and Mobile App Development',
-			location: 'Moncton, New Brunswick',
-			description:
-				"<p id='description'>Further cemented my skills in software development working primarily in .NET Framework with C#. Built hybrid and native mobile apps using React-Native, Swift, and Kotlin.",
-			date: 'September 2018 - May 2020',
-			icon: 'school',
-		},
-		{
-			id: 3,
-			title: 'BC Jobs',
-			location: 'Vancouver, British Columbia (Remote)',
-			description:
-				'<ul id=\'description\' class="list-disc list-inside mt-4"><li class="mb-3">Migrated system from a data center to a cloud-based solution.</li><li class="mb-3">Automated deployments using GitHub Actions.</li><li class="mb-3">Maintained and expanded upon ASP.NET Core application.</li><li class="mb-3">Improved site’s SEO resulting in an increase of traffic.</li></ul>',
-			date: 'June 2020 - July 2022',
+			id: 'bcjobs',
+			title: 'Software Developer',
+			location: 'BCJobs',
+			description: `
+		<p>Sole maintainer of .NET Core-based job board platforms. Led a full infrastructure migration from a traditional data center to <span class='font-semibold text-pink-300'>AWS</span> and implemented a <span class='font-semibold text-pink-300'>CI/CD pipeline</span> using GitHub Actions.</p>
+		<ul class='mb-4 list-disc list-inside pl-6'>
+			<li>Migrated legacy infrastructure to <span class='font-semibold text-pink-300'>AWS</span>, improving scalability and reliability.</li>
+			<li>Automated deployments and testing with a modern <span class='font-semibold text-pink-300'>CI/CD pipeline</span> using GitHub Actions.</li>
+			<li>Maintained and expanded the core <span class='font-semibold text-pink-300'>ASP.NET Core</span> application, implementing new features and resolving critical bugs.</li>
+			<li>Improved site SEO and performance, resulting in increased user engagement and traffic.</li>
+		</ul>
+	`,
+			date: '2020 - 2022',
 			icon: 'work',
 		},
 		{
-			id: 4,
-			title: 'Populus Plus',
-			location: 'Fredericton, New Brunswick (Remote)',
-			description:
-				'<ul id=\'description\' class="list-disc list-inside mt-4"><li class="mb-3">Helped to maintain applications used for conducting medical studies across Canada and the United States. Stack included Spring/Java, Flyway, Hibernate, Angular, and Postgres.</li><li class="mb-3">Assisted in implementing a system for consolidating health insurance information in Belize. Technologies used include Angular, Spring, Nifi, OHDSI, HAPI-FHIR, and Docker.</li><li>Aided in improvements and fixes relating to medical software used by medical professionals for tracking data such as patient encounters, prescriptions, and diagnoses. Project was built on Java using struts, Angular for newer sections, and JSP for legacy sections.</li></ul>',
-			date: 'August 2023 - Present',
+			id: 'populus',
+			title: 'Software Developer',
+			location: 'Populus Plus',
+			description: `
+		<p>Contributed to several large-scale medical software projects using <span class='font-semibold text-pink-300'>Java (Spring Boot, Java EE)</span> and <span class='font-semibold text-pink-300'>Angular</span>. Our software is used internationally in countries such as <span class='font-semibold text-pink-300'>Canada</span>, <span class='font-semibold text-pink-300'>Belize</span>, and <span class='font-semibold text-pink-300'>Barbados</span>, supporting both public health and research efforts.</p>
+		<ul class='mb-4 list-disc list-inside pl-6'>
+			<li>A <span class='font-semibold text-pink-300'>health information system</span> (HIS) managing patient records, prescriptions, practitioner data, and clinical encounters.</li>
+			<li>A <span class='font-semibold text-pink-300'>clinical research platform</span> for managing medical studies, including specimen tracking and subject metadata.</li>
+			<li>An <span class='font-semibold text-pink-300'>interoperability platform</span> enabling Belize's healthcare systems to exchange data using the FHIR standard, with real-time transformation and analytics.</li>
+		</ul>
+	`,
+			date: '2022 - Present',
 			icon: 'work',
 		},
 	]
