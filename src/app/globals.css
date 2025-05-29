@@ -28,6 +28,10 @@
     }
 }
 
+body, html, #root, main, section, div, p, span {
+    user-select: text !important;
+}
+
 html,
 body,
 #root {
