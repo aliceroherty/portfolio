@@ -53,7 +53,7 @@ const About = () => {
 					<motion.div
 						variants={fadeUp}
 						custom={3}
-						className='flex flex-wrap items-center gap-3 mb-2'
+						className='flex flex-wrap items-center gap-3 mb-2 justify-center lg:justify-start'
 					>
 						{ChipDataService.getAboutSectionData().map((chip) => (
 							<Chip chip={chip} key={chip.label?.toString()} />
